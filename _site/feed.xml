@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>j1111011 Pages</title>
+    <description>Welcome to my sites.
+</description>
+    <link>http://j1111011.github.io/</link>
+    <atom:link href="http://j1111011.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Thu, 03 Mar 2016 11:56:44 +0800</pubDate>
+    <lastBuildDate>Thu, 03 Mar 2016 11:56:44 +0800</lastBuildDate>
+    <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+        <title>Hello Jekyll</title>
+        <description>&lt;h1 id=&quot;first-post-in-github-pages&quot;&gt;First Post in Github Pages&lt;/h1&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;hello tips
+good&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;##Test Yellow&lt;/p&gt;
+
+&lt;p&gt;###Test Blue&lt;/p&gt;
+
+&lt;p&gt;(什么鬼)&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.baidu.com&quot;&gt;百度&lt;/a&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;date = Yellow.now()&lt;/code&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;puts date&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://cdn.sspai.com/attachment/thumbnail/2014/04/15/f43f4d7659397398c499180c22c9855a10f72_mw_800_wm_1_wmp_3.jpg&quot; alt=&quot;Map&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;line1&lt;/li&gt;
+  &lt;li&gt;line2
+    &lt;ol&gt;
+      &lt;li&gt;line3&lt;/li&gt;
+      &lt;li&gt;line4&lt;/li&gt;
+      &lt;li&gt;line5
+&lt;strong&gt;*
+**Some Things Wrong&lt;/strong&gt;&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;em&gt;Some Things Wrong&lt;/em&gt;&lt;/p&gt;
+</description>
+        <pubDate>Thu, 03 Mar 2016 10:28:21 +0800</pubDate>
+        <link>http://j1111011.github.io/2016/03/03/hellojekyll.html</link>
+        <guid isPermaLink="true">http://j1111011.github.io/2016/03/03/hellojekyll.html</guid>
+        
+        
+      </item>
+    
+  </channel>
+</rss>
