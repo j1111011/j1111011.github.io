@@ -1,0 +1,47 @@
+---
+layout:	post
+title:	"折腾了好久，最终还是使用jekyll"
+date:	2016-03-03 13:41:45 +0800
+description: ""
+categories:	
+tags:	[]
+---
+## 折腾
+折腾了好久jekyllbootstrap，被CSS伤到了，换成原生的jekyll,然后用了他的Rakefile生成新post
+
+## 拥抱Jekyll
+
+### 安装Jekyll
+
+
+\#gem install jekyll
+
+\#jekyll new sites
+
+\#cd sites
+
+### 写新Post
+在_post 下面生成
+
+YEAR-MONTH-DAY-title.markdown
+
+文件的开头，以以下形式书写
+
+    ---
+    layout: post
+    title: "Hello Jekyll"
+    date: 2016-03-03 10:28:21 +0800 
+    description: ""
+    categories: 
+    tags: []
+    ---
+	
+时间里的+0800,是时区，如果没有，会在Posts里显示不出来
+
+### 发布
+\#jekyll build
+
+### 查看效果
+\#jekyll serve -w
+
+[查看结果](http://127.0.0.1:4000/)

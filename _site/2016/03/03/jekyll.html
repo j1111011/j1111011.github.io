@@ -6,12 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>About</title>
-  <meta name="description" content="Welcome to my sites.
-">
+  <title>折腾了好久，最终还是使用jekyll</title>
+  <meta name="description" content="折腾折腾了好久jekyllbootstrap，被CSS伤到了，换成原生的jekyll,然后用了他的Rakefile生成新post">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://j1111011.github.io/about/">
+  <link rel="canonical" href="http://j1111011.github.io/2016/03/03/jekyll.html">
   <link rel="alternate" type="application/rss+xml" title="j1111011 Pages" href="http://j1111011.github.io/feed.xml">
 </head>
 
@@ -55,14 +54,54 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <article class="post">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title">About</h1>
+    <h1 class="post-title" itemprop="name headline">折腾了好久，最终还是使用jekyll</h1>
+    <p class="post-meta"><time datetime="2016-03-03T13:41:45+08:00" itemprop="datePublished">Mar 3, 2016</time></p>
   </header>
 
-  <div class="post-content">
-    <p>Github Pages</p>
+  <div class="post-content" itemprop="articleBody">
+    <h2 id="section">折腾</h2>
+<p>折腾了好久jekyllbootstrap，被CSS伤到了，换成原生的jekyll,然后用了他的Rakefile生成新post</p>
+
+<h2 id="jekyll">拥抱Jekyll</h2>
+
+<h3 id="jekyll-1">安装Jekyll</h3>
+
+<p>#gem install jekyll</p>
+
+<p>#jekyll new sites</p>
+
+<p>#cd sites</p>
+
+<h3 id="post">写新Post</h3>
+<p>在_post 下面生成</p>
+
+<p>YEAR-MONTH-DAY-title.markdown</p>
+
+<p>文件的开头，以以下形式书写</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>---
+layout: post
+title: "Hello Jekyll"
+date: 2016-03-03 10:28:21 +0800 
+description: ""
+categories: 
+tags: []
+---
+</code></pre>
+</div>
+
+<p>时间里的+0800,是时区，如果没有，会在Posts里显示不出来</p>
+
+<h3 id="section-1">发布</h3>
+<p>#jekyll build</p>
+
+<h3 id="section-2">查看效果</h3>
+<p>#jekyll serve -w</p>
+
+<p><a href="http://127.0.0.1:4000/">查看结果</a></p>
 
   </div>
 

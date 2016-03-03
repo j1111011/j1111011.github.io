@@ -6,9 +6,59 @@
 </description>
     <link>http://j1111011.github.io/</link>
     <atom:link href="http://j1111011.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 03 Mar 2016 11:56:44 +0800</pubDate>
-    <lastBuildDate>Thu, 03 Mar 2016 11:56:44 +0800</lastBuildDate>
+    <pubDate>Thu, 03 Mar 2016 14:36:52 +0800</pubDate>
+    <lastBuildDate>Thu, 03 Mar 2016 14:36:52 +0800</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+        <title>折腾了好久，最终还是使用jekyll</title>
+        <description>&lt;h2 id=&quot;section&quot;&gt;折腾&lt;/h2&gt;
+&lt;p&gt;折腾了好久jekyllbootstrap，被CSS伤到了，换成原生的jekyll,然后用了他的Rakefile生成新post&lt;/p&gt;
+
+&lt;h2 id=&quot;jekyll&quot;&gt;拥抱Jekyll&lt;/h2&gt;
+
+&lt;h3 id=&quot;jekyll-1&quot;&gt;安装Jekyll&lt;/h3&gt;
+
+&lt;p&gt;#gem install jekyll&lt;/p&gt;
+
+&lt;p&gt;#jekyll new sites&lt;/p&gt;
+
+&lt;p&gt;#cd sites&lt;/p&gt;
+
+&lt;h3 id=&quot;post&quot;&gt;写新Post&lt;/h3&gt;
+&lt;p&gt;在_post 下面生成&lt;/p&gt;
+
+&lt;p&gt;YEAR-MONTH-DAY-title.markdown&lt;/p&gt;
+
+&lt;p&gt;文件的开头，以以下形式书写&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
+layout: post
+title: &quot;Hello Jekyll&quot;
+date: 2016-03-03 10:28:21 +0800 
+description: &quot;&quot;
+categories: 
+tags: []
+---
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;时间里的+0800,是时区，如果没有，会在Posts里显示不出来&lt;/p&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;发布&lt;/h3&gt;
+&lt;p&gt;#jekyll build&lt;/p&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;查看效果&lt;/h3&gt;
+&lt;p&gt;#jekyll serve -w&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://127.0.0.1:4000/&quot;&gt;查看结果&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Thu, 03 Mar 2016 13:41:45 +0800</pubDate>
+        <link>http://j1111011.github.io/2016/03/03/jekyll.html</link>
+        <guid isPermaLink="true">http://j1111011.github.io/2016/03/03/jekyll.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>Hello Jekyll</title>
