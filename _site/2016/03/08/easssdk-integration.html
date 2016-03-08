@@ -6,12 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>j1111011 Pages</title>
-  <meta name="description" content="Welcome to my sites.
-">
+  <title>AssSDK 集成方法及环境配置 </title>
+  <meta name="description" content="请点击 下载 AAR库">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://j1111011.github.io/">
+  <link rel="canonical" href="http://j1111011.github.io/2016/03/08/easssdk-integration.html">
   <link rel="alternate" type="application/rss+xml" title="j1111011 Pages" href="http://j1111011.github.io/feed.xml">
 </head>
 
@@ -55,41 +54,74 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="home">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-  <h1 class="page-heading">Posts</h1>
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">AssSDK 集成方法及环境配置 </h1>
+    <p class="post-meta"><time datetime="2016-03-08T13:52:59+08:00" itemprop="datePublished">Mar 8, 2016</time></p>
+  </header>
 
-  <ul class="post-list">
-    
-      <li>
-        <span class="post-meta">Mar 8, 2016</span>
+  <div class="post-content" itemprop="articleBody">
+    <h3 id="http7xrgjrcom1z0glbclouddncomasssdk-releaseaar-aar">请点击 <a href="http://7xrgjr.com1.z0.glb.clouddn.com/asssdk-release.aar">下载</a> AAR库</h3>
 
-        <h2>
-          <a class="post-link" href="/2016/03/08/easssdk-integration.html">AssSDK 集成方法及环境配置 </a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Mar 3, 2016</span>
+<h3 id="aar">选择导入AAR库</h3>
 
-        <h2>
-          <a class="post-link" href="/2016/03/03/jekyll.html">折腾了好久，最终还是使用jekyll</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Mar 3, 2016</span>
+<p>从Android Studio以下Menu导入库包
+File-&gt;New-&gt;New Moudle-&gt;Import .JAR/.AAR package</p>
 
-        <h2>
-          <a class="post-link" href="/2016/03/03/hellojekyll.html">Hello Jekyll</a>
-        </h2>
-      </li>
-    
-  </ul>
+<p>如下图所示：</p>
 
-  <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
+<p>图1：</p>
 
+<p><img src="http://7xrgjr.com1.z0.glb.clouddn.com/import_arr_1.png" alt="图1" /></p>
+
+<p>图2：</p>
+
+<p><img src="http://7xrgjr.com1.z0.glb.clouddn.com/import_arr_2.png" alt="图2" /></p>
+
+<p>选择我们的asssdk-release.aar包，并导入</p>
+
+<h3 id="section">配置环境</h3>
+
+<p>在APP的gradle.build</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'	    
+}
+</code></pre>
 </div>
+
+<p>之中加入</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>compile 'com.google.code.gson:gson:2.4'
+compile 'com.mcxiaoke.volley:library:1.0.19'
+compile project(':asssdk-release')
+</code></pre>
+</div>
+
+<p>在入口函数加入集成代码：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>import com.yiba.asssdk.AssSdkSettings;
+public class MainActivity extends Activity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        AssSdkSettings.setAppName("sdkdemo");
+        AssSdkSettings.setAppVersion("1.0.0");
+        AssSdkSettings.StartService(getApplicationContext());
+    }
+}
+</code></pre>
+</div>
+
+<h3 id="section-1">编译生成</h3>
+
+  </div>
+
+</article>
 
       </div>
     </div>
