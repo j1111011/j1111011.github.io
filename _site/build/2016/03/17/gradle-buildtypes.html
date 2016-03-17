@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Hello Jekyll</title>
-  <meta name="description" content="First Post in Github Pages">
+  <title>Android Studio区别编译Debug|Release版本</title>
+  <meta name="description" content="Android Studio区别编译Debug|Release版本">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://j1111011.github.io/2016/03/03/hellojekyll.html">
+  <link rel="canonical" href="http://j1111011.github.io/build/2016/03/17/gradle-buildtypes.html">
   <link rel="alternate" type="application/rss+xml" title="j1111011 Pages" href="http://j1111011.github.io/feed.xml">
 </head>
 
@@ -57,47 +57,54 @@
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">Hello Jekyll</h1>
-    <p class="post-meta"><time datetime="2016-03-03T10:28:21+08:00" itemprop="datePublished">Mar 3, 2016</time></p>
+    <h1 class="post-title" itemprop="name headline">Android Studio区别编译Debug|Release版本</h1>
+    <p class="post-meta"><time datetime="2016-03-17T11:47:23+08:00" itemprop="datePublished">Mar 17, 2016</time></p>
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <h1 id="first-post-in-github-pages">First Post in Github Pages</h1>
+    <h2 id="android-studiodebugrelease">Android Studio区别编译Debug|Release版本</h2>
 
-<blockquote>
-  <p>hello tips
-good</p>
-</blockquote>
+<p>之前用C++，系统有个预设宏，可以直接用来判断Debug,Release版本，最近在弄个Android项目，用了AS发现，Gradle还是蛮方便的，只要做如下设置</p>
 
-<p>##Test Yellow</p>
+<pre><code> buildTypes {
+        release {
+            buildConfigField "boolean", "IsAlpha", "false"
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            buildConfigField "boolean", "IsAlpha", "true"
+        }
+}
+</code></pre>
 
-<p>###Test Blue</p>
+<p>在指定目录下会生成以下文件 build\generated\source\buildConfig\debug\com\example\BuildConfig.java (com\example 为你的应用包名）</p>
 
-<p>(什么鬼)</p>
+<pre><code>public final class BuildConfig {
+  public static final boolean DEBUG = Boolean.parseBoolean("true");
+  public static final String APPLICATION_ID = "com.example";
+  public static final String BUILD_TYPE = "debug";
+  public static final String FLAVOR = "";
+  public static final int VERSION_CODE = 100;
+  public static final String VERSION_NAME = "";
+  // Fields from build type: debug
+  public static final boolean IsAlpha = true;
+}
+</code></pre>
 
-<p><a href="http://www.baidu.com">百度</a>
-<code>date = Yellow.now()</code>
-<code>puts date</code></p>
+<p>设置成功之后，IsAlpha会根据你不同的编译目标，生成不同的值。你就可以在你的代码里调用</p>
 
-<p><img src="http://cdn.sspai.com/attachment/thumbnail/2014/04/15/f43f4d7659397398c499180c22c9855a10f72_mw_800_wm_1_wmp_3.jpg" alt="Map" /></p>
+<pre><code>if(BuildConfig.IsAlpha) { 
+	//...
+}
+</code></pre>
 
-<ul>
-  <li>line1</li>
-  <li>line2
-    <ol>
-      <li>line3</li>
-      <li>line4</li>
-      <li>line5
-<strong>*
-**Some Things Wrong</strong></li>
-    </ol>
-  </li>
-</ul>
+<p>进行区别初始化，编译APP啦</p>
 
-<p><em>Some Things Wrong</em></p>
+<p><a href="http://www.cnblogs.com/tt_mc/p/4277180.html" title="详见参考资料">参考资料</a></p>
 
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="/2016/03/03/hellojekyll" data-title="Hello Jekyll" data-url="j1111011.github.io/2016/03/03/hellojekyll.html"></div>
+	<div class="ds-thread" data-thread-key="/build/2016/03/17/gradle-buildtypes" data-title="Android Studio区别编译Debug|Release版本" data-url="j1111011.github.io/build/2016/03/17/gradle-buildtypes.html"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

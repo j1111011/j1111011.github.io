@@ -85,24 +85,22 @@ File-&gt;New-&gt;New Moudle-&gt;Import .JAR/.AAR package</p>
 
 <p>在APP的gradle.build</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>dependencies {
+<pre><code>dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'	    
 }
 </code></pre>
-</div>
 
 <p>之中加入</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>compile 'com.google.code.gson:gson:2.4'
+<pre><code>compile 'com.google.code.gson:gson:2.4'
 compile 'com.mcxiaoke.volley:library:1.0.19'
 compile project(':asssdk-release')
 </code></pre>
-</div>
 
 <p>在入口函数加入集成代码：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>import com.yiba.asssdk.AssSdkSettings;
+<pre><code>import com.yiba.asssdk.AssSdkSettings;
 public class MainActivity extends Activity {
 
     @Override
@@ -115,16 +113,33 @@ public class MainActivity extends Activity {
     }
 }
 </code></pre>
-</div>
 
 <h3 id="section-1">编译生成</h3>
 
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="/2016/03/08/easssdk-integration" data-title="AssSDK 集成方法及环境配置 " data-url="j1111011.github.io/2016/03/08/easssdk-integration.html"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"j1111011"};
+		(function() {
+			var ds = document.createElement('script');
+			ds.type = 'text/javascript';ds.async = true;
+			ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+			ds.charset = 'UTF-8';
+			(document.getElementsByTagName('head')[0] 
+			 || document.getElementsByTagName('body')[0]).appendChild(ds);
+		})();
+		</script>
+	<!-- 多说公共JS代码 end -->
   </div>
 
 </article>
-
+		
       </div>
     </div>
+	
+
 
     <footer class="site-footer">
 

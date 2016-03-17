@@ -6,9 +6,69 @@
 </description>
     <link>http://j1111011.github.io/</link>
     <atom:link href="http://j1111011.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 08 Mar 2016 14:27:37 +0800</pubDate>
-    <lastBuildDate>Tue, 08 Mar 2016 14:27:37 +0800</lastBuildDate>
+    <pubDate>Thu, 17 Mar 2016 13:51:42 +0800</pubDate>
+    <lastBuildDate>Thu, 17 Mar 2016 13:51:42 +0800</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+        <title>Android Studio区别编译Debug|Release版本</title>
+        <description>&lt;h2 id=&quot;android-studiodebugrelease&quot;&gt;Android Studio区别编译Debug|Release版本&lt;/h2&gt;
+
+&lt;p&gt;之前用C++，系统有个预设宏，可以直接用来判断Debug,Release版本，最近在弄个Android项目，用了AS发现，Gradle还是蛮方便的，只要做如下设置&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; buildTypes {
+        release {
+            buildConfigField &quot;boolean&quot;, &quot;IsAlpha&quot;, &quot;false&quot;
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile(&#39;proguard-android.txt&#39;), &#39;proguard-rules.pro&#39;
+        }
+        debug {
+            buildConfigField &quot;boolean&quot;, &quot;IsAlpha&quot;, &quot;true&quot;
+        }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在指定目录下会生成以下文件 build\generated\source\buildConfig\debug\com\example\BuildConfig.java (com\example 为你的应用包名）&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public final class BuildConfig {
+  public static final boolean DEBUG = Boolean.parseBoolean(&quot;true&quot;);
+  public static final String APPLICATION_ID = &quot;com.example&quot;;
+  public static final String BUILD_TYPE = &quot;debug&quot;;
+  public static final String FLAVOR = &quot;&quot;;
+  public static final int VERSION_CODE = 100;
+  public static final String VERSION_NAME = &quot;&quot;;
+  // Fields from build type: debug
+  public static final boolean IsAlpha = true;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;设置成功之后，IsAlpha会根据你不同的编译目标，生成不同的值。你就可以在你的代码里调用&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;if(BuildConfig.IsAlpha) { 
+	//...
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;进行区别初始化，编译APP啦&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/tt_mc/p/4277180.html&quot; title=&quot;详见参考资料&quot;&gt;参考资料&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Thu, 17 Mar 2016 11:47:23 +0800</pubDate>
+        <link>http://j1111011.github.io/build/2016/03/17/gradle-buildtypes.html</link>
+        <guid isPermaLink="true">http://j1111011.github.io/build/2016/03/17/gradle-buildtypes.html</guid>
+        
+        <category>gradle</category>
+        
+        <category>android studio</category>
+        
+        <category>debug</category>
+        
+        <category>release</category>
+        
+        
+        <category>build</category>
+        
+      </item>
     
       <item>
         <title>AssSDK 集成方法及环境配置 </title>
@@ -35,24 +95,22 @@ File-&amp;gt;New-&amp;gt;New Moudle-&amp;gt;Import .JAR/.AAR package&lt;/p&gt;
 
 &lt;p&gt;在APP的gradle.build&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dependencies {
+&lt;pre&gt;&lt;code&gt;dependencies {
     compile fileTree(include: [&#39;*.jar&#39;], dir: &#39;libs&#39;)
     testCompile &#39;junit:junit:4.12&#39;	    
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;之中加入&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;compile &#39;com.google.code.gson:gson:2.4&#39;
+&lt;pre&gt;&lt;code&gt;compile &#39;com.google.code.gson:gson:2.4&#39;
 compile &#39;com.mcxiaoke.volley:library:1.0.19&#39;
 compile project(&#39;:asssdk-release&#39;)
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;在入口函数加入集成代码：&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import com.yiba.asssdk.AssSdkSettings;
+&lt;pre&gt;&lt;code&gt;import com.yiba.asssdk.AssSdkSettings;
 public class MainActivity extends Activity {
 
     @Override
@@ -65,7 +123,6 @@ public class MainActivity extends Activity {
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;section-1&quot;&gt;编译生成&lt;/h3&gt;
 </description>
@@ -98,7 +155,7 @@ public class MainActivity extends Activity {
 
 &lt;p&gt;文件的开头，以以下形式书写&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
+&lt;pre&gt;&lt;code&gt;---
 layout: post
 title: &quot;Hello Jekyll&quot;
 date: 2016-03-03 10:28:21 +0800 
@@ -107,7 +164,6 @@ categories:
 tags: []
 ---
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;时间里的+0800,是时区，如果没有，会在Posts里显示不出来&lt;/p&gt;
 
@@ -142,8 +198,8 @@ good&lt;/p&gt;
 &lt;p&gt;(什么鬼)&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;http://www.baidu.com&quot;&gt;百度&lt;/a&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;date = Yellow.now()&lt;/code&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;puts date&lt;/code&gt;&lt;/p&gt;
+&lt;code&gt;date = Yellow.now()&lt;/code&gt;
+&lt;code&gt;puts date&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;http://cdn.sspai.com/attachment/thumbnail/2014/04/15/f43f4d7659397398c499180c22c9855a10f72_mw_800_wm_1_wmp_3.jpg&quot; alt=&quot;Map&quot; /&gt;&lt;/p&gt;
 
