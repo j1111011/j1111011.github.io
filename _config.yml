@@ -17,4 +17,5 @@ github_username:  j1111011
 
 # Build settings
 markdown: kramdown
+highlight: true
 highlighter: pygments

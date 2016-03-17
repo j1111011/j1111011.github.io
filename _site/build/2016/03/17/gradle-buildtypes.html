@@ -66,38 +66,38 @@
 
 <p>之前用C++，系统有个预设宏，可以直接用来判断Debug,Release版本，最近在弄个Android项目，用了AS发现，Gradle还是蛮方便的，只要做如下设置</p>
 
-<pre><code> buildTypes {
-        release {
-            buildConfigField "boolean", "IsAlpha", "false"
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-        debug {
-            buildConfigField "boolean", "IsAlpha", "true"
-        }
-}
-</code></pre>
+<figure class="highlight"><pre><code class="language-python" data-lang="python">	 <span class="n">buildTypes</span> <span class="p">{</span>
+	        <span class="n">release</span> <span class="p">{</span>
+	            <span class="n">buildConfigField</span> <span class="s">&quot;boolean&quot;</span><span class="p">,</span> <span class="s">&quot;IsAlpha&quot;</span><span class="p">,</span> <span class="s">&quot;false&quot;</span>
+	            <span class="n">minifyEnabled</span> <span class="n">true</span>
+	            <span class="n">proguardFiles</span> <span class="n">getDefaultProguardFile</span><span class="p">(</span><span class="s">&#39;proguard-android.txt&#39;</span><span class="p">),</span> <span class="s">&#39;proguard-rules.pro&#39;</span>
+	        <span class="p">}</span>
+	        <span class="n">debug</span> <span class="p">{</span>
+	            <span class="n">buildConfigField</span> <span class="s">&quot;boolean&quot;</span><span class="p">,</span> <span class="s">&quot;IsAlpha&quot;</span><span class="p">,</span> <span class="s">&quot;true&quot;</span>
+	        <span class="p">}</span>
+	<span class="p">}</span>
+	</code></pre></figure>
 
 <p>在指定目录下会生成以下文件 build\generated\source\buildConfig\debug\com\example\BuildConfig.java (com\example 为你的应用包名）</p>
 
-<pre><code>public final class BuildConfig {
-  public static final boolean DEBUG = Boolean.parseBoolean("true");
-  public static final String APPLICATION_ID = "com.example";
-  public static final String BUILD_TYPE = "debug";
-  public static final String FLAVOR = "";
-  public static final int VERSION_CODE = 100;
-  public static final String VERSION_NAME = "";
-  // Fields from build type: debug
-  public static final boolean IsAlpha = true;
-}
-</code></pre>
+<figure class="highlight"><pre><code class="language-java" data-lang="java">	<span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">BuildConfig</span> <span class="o">{</span>
+	  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">boolean</span> <span class="n">DEBUG</span> <span class="o">=</span> <span class="n">Boolean</span><span class="o">.</span><span class="na">parseBoolean</span><span class="o">(</span><span class="s">&quot;true&quot;</span><span class="o">);</span>
+	  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">APPLICATION_ID</span> <span class="o">=</span> <span class="s">&quot;com.example&quot;</span><span class="o">;</span>
+	  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">BUILD_TYPE</span> <span class="o">=</span> <span class="s">&quot;debug&quot;</span><span class="o">;</span>
+	  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">FLAVOR</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="o">;</span>
+	  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">VERSION_CODE</span> <span class="o">=</span> <span class="mi">100</span><span class="o">;</span>
+	  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">VERSION_NAME</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="o">;</span>
+	  <span class="c1">// Fields from build type: debug</span>
+	  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">boolean</span> <span class="n">IsAlpha</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+	<span class="o">}</span>
+	</code></pre></figure>
 
 <p>设置成功之后，IsAlpha会根据你不同的编译目标，生成不同的值。你就可以在你的代码里调用</p>
 
-<pre><code>if(BuildConfig.IsAlpha) { 
-	//...
-}
-</code></pre>
+<figure class="highlight"><pre><code class="language-java" data-lang="java">	<span class="k">if</span><span class="o">(</span><span class="n">BuildConfig</span><span class="o">.</span><span class="na">IsAlpha</span><span class="o">)</span> <span class="o">{</span> 
+		<span class="c1">//...</span>
+	<span class="o">}</span>
+	</code></pre></figure>
 
 <p>进行区别初始化，编译APP啦</p>
 

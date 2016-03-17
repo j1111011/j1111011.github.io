@@ -85,34 +85,34 @@ File-&gt;New-&gt;New Moudle-&gt;Import .JAR/.AAR package</p>
 
 <p>在APP的gradle.build</p>
 
-<pre><code>dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    testCompile 'junit:junit:4.12'	    
-}
-</code></pre>
+<figure class="highlight"><pre><code class="language-python" data-lang="python">	<span class="n">dependencies</span> <span class="p">{</span>
+	    <span class="nb">compile</span> <span class="n">fileTree</span><span class="p">(</span><span class="n">include</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;*.jar&#39;</span><span class="p">],</span> <span class="nb">dir</span><span class="p">:</span> <span class="s">&#39;libs&#39;</span><span class="p">)</span>
+	    <span class="n">testCompile</span> <span class="s">&#39;junit:junit:4.12&#39;</span>	    
+	<span class="p">}</span>
+	</code></pre></figure>
 
 <p>之中加入</p>
 
-<pre><code>compile 'com.google.code.gson:gson:2.4'
-compile 'com.mcxiaoke.volley:library:1.0.19'
-compile project(':asssdk-release')
-</code></pre>
+<figure class="highlight"><pre><code class="language-python" data-lang="python">	<span class="nb">compile</span> <span class="s">&#39;com.google.code.gson:gson:2.4&#39;</span>
+	<span class="nb">compile</span> <span class="s">&#39;com.mcxiaoke.volley:library:1.0.19&#39;</span>
+    <span class="nb">compile</span> <span class="n">project</span><span class="p">(</span><span class="s">&#39;:asssdk-release&#39;</span><span class="p">)</span>
+	</code></pre></figure>
 
 <p>在入口函数加入集成代码：</p>
 
-<pre><code>import com.yiba.asssdk.AssSdkSettings;
-public class MainActivity extends Activity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        AssSdkSettings.setAppName("sdkdemo");
-        AssSdkSettings.setAppVersion("1.0.0");
-        AssSdkSettings.StartService(getApplicationContext());
-    }
-}
-</code></pre>
+<figure class="highlight"><pre><code class="language-java" data-lang="java">	<span class="kn">import</span> <span class="nn">com.yiba.asssdk.AssSdkSettings</span><span class="o">;</span>
+	<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="n">Activity</span> <span class="o">{</span>
+	
+	    <span class="nd">@Override</span>
+	    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+	        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+	        <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+	        <span class="n">AssSdkSettings</span><span class="o">.</span><span class="na">setAppName</span><span class="o">(</span><span class="s">&quot;sdkdemo&quot;</span><span class="o">);</span>
+	        <span class="n">AssSdkSettings</span><span class="o">.</span><span class="na">setAppVersion</span><span class="o">(</span><span class="s">&quot;1.0.0&quot;</span><span class="o">);</span>
+	        <span class="n">AssSdkSettings</span><span class="o">.</span><span class="na">StartService</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">());</span>
+	    <span class="o">}</span>
+	<span class="o">}</span>
+	</code></pre></figure>
 
 <h3 id="section-1">编译生成</h3>
 

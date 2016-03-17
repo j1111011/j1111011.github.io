@@ -29,20 +29,25 @@ File->New->New Moudle->Import .JAR/.AAR package
 
 在APP的gradle.build
 
+	{% highlight python %}
 	dependencies {
 	    compile fileTree(include: ['*.jar'], dir: 'libs')
 	    testCompile 'junit:junit:4.12'	    
 	}
+	{% endhighlight %}
 
 之中加入
 
+	{% highlight python %}
 	compile 'com.google.code.gson:gson:2.4'
 	compile 'com.mcxiaoke.volley:library:1.0.19'
     compile project(':asssdk-release')
+	{% endhighlight %}
 
 
 在入口函数加入集成代码：
-
+	
+	{% highlight java %}
 	import com.yiba.asssdk.AssSdkSettings;
 	public class MainActivity extends Activity {
 	
@@ -55,6 +60,7 @@ File->New->New Moudle->Import .JAR/.AAR package
 	        AssSdkSettings.StartService(getApplicationContext());
 	    }
 	}
+	{% endhighlight %}
 
 
 ### 编译生成
