@@ -6,9 +6,41 @@
 </description>
     <link>http://j1111011.github.io/</link>
     <atom:link href="http://j1111011.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 21 Mar 2016 14:07:20 +0800</pubDate>
-    <lastBuildDate>Mon, 21 Mar 2016 14:07:20 +0800</lastBuildDate>
+    <pubDate>Tue, 12 Apr 2016 14:37:25 +0800</pubDate>
+    <lastBuildDate>Tue, 12 Apr 2016 14:37:25 +0800</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+        <title>Build mips openssl</title>
+        <description>&lt;p&gt;这2天折腾编译路由器一个应用程序，程序代码依赖了OpenSSL。尝试编译它，折腾好久，最终找到一个靠谱的方法。&lt;/p&gt;
+
+&lt;p&gt;下载源码后，使用&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#./Configure linux-mips32 --cross-compile-prefix=mipsel-buildroot-linux-uclibc- --prefix=/opt/buildroot-gcc463/usr/mipsel-buildroot-linux-uclibc/sysroot/usr/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#make
+#make install
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;编译起来还是蛮方便的&lt;/p&gt;
+
+&lt;p&gt;推荐一个博客,里面有编译一些开源库的方法&lt;a href=&quot;http://blog.csdn.net/zjg555543/article/details/7520936&quot;&gt;mips交叉编译开源库&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Tue, 12 Apr 2016 14:15:01 +0800</pubDate>
+        <link>http://j1111011.github.io/2016/04/12/build-mips-openssl.html</link>
+        <guid isPermaLink="true">http://j1111011.github.io/2016/04/12/build-mips-openssl.html</guid>
+        
+        <category>cross-platform</category>
+        
+        <category>mips</category>
+        
+        <category>openssl</category>
+        
+        
+      </item>
     
       <item>
         <title>Android Studio区别编译Debug|Release版本</title>
