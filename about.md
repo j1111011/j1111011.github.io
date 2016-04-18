@@ -5,7 +5,7 @@ permalink: /about/
 ---
 # 关于我 #
 
-<img src="http://7xrgjr.com1.z0.glb.clouddn.com/gnu.jpg" width="80px">j1111011</img>
+<img src="http://7xrgjr.com1.z0.glb.clouddn.com/gnu.jpg" width="80px">j1111011
 
 
 从业经验:      2008年5月至今，8年以上
