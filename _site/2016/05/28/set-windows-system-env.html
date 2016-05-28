@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Build mips openssl</title>
-  <meta name="description" content="这2天折腾编译路由器一个应用程序，程序代码依赖了OpenSSL。尝试编译它，折腾好久，最终找到一个靠谱的方法。">
+  <title>set windows system environment</title>
+  <meta name="description" content="添加系统变量">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://j1111011.github.io/2016/04/12/build-mips-openssl.html">
+  <link rel="canonical" href="http://j1111011.github.io/2016/05/28/set-windows-system-env.html">
   <link rel="alternate" type="application/rss+xml" title="j1111011 Pages" href="http://j1111011.github.io/feed.xml">
 </head>
 
@@ -57,30 +57,44 @@
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">Build mips openssl</h1>
-    <p class="post-meta"><time datetime="2016-04-12T14:15:01+08:00" itemprop="datePublished">Apr 12, 2016</time></p>
+    <h1 class="post-title" itemprop="name headline">set windows system environment</h1>
+    <p class="post-meta"><time datetime="2016-05-28T11:45:18+08:00" itemprop="datePublished">May 28, 2016</time></p>
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <p>这2天折腾编译路由器一个应用程序，程序代码依赖了OpenSSL。尝试编译它，折腾好久，最终找到一个靠谱的方法。</p>
+    <h1 id="section">添加系统变量</h1>
 
-<p>下载源码后，使用</p>
+<p>Windows 提供了API函数SetEnvironmentVariable，不过这个函数只能修改当前进程的环境变量，而不能修改其他进程和系统的变量。
+要修改系统的环境变量，需要修改注册表SYSTEM\CurrentControlSet\Control\Session Manager\Environment搜索下的项,在下面增加一个字项就可以了。</p>
 
-<pre><code>#./Configure linux-mips32 --cross-compile-prefix=mipsel-buildroot-linux-uclibc- --prefix=/opt/buildroot-gcc463/usr/mipsel-buildroot-linux-uclibc/sysroot/usr/
-</code></pre>
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++">	<span class="c1">// system environment</span>
+	<span class="n">QSettings</span> <span class="nf">settings</span><span class="p">(</span><span class="s">&quot;HKEY_LOCAL_MACHINE</span><span class="se">\\</span><span class="s">SYSTEM</span><span class="se">\\</span><span class="s">CurrentControlSet</span><span class="se">\\</span><span class="s">Control</span><span class="se">\\</span><span class="s">Session Manager</span><span class="se">\\</span><span class="s">Environment&quot;</span><span class="p">,</span><span class="n">QSettings</span><span class="o">::</span><span class="n">NativeFormat</span><span class="p">);</span>
+	<span class="n">settings</span><span class="p">.</span><span class="n">setValue</span><span class="p">(</span><span class="s">&quot;K&quot;</span><span class="p">,</span><span class="s">&quot;V&quot;</span><span class="p">);</span>
+	<span class="n">settings</span><span class="p">.</span><span class="n">sync</span><span class="p">();</span>
+	<span class="c1">// user environment</span>
+	<span class="n">QSettings</span> <span class="nf">users</span><span class="p">(</span><span class="s">&quot;HKEY_CURRENT_USER</span><span class="se">\\</span><span class="s">Environment&quot;</span><span class="p">,</span><span class="n">QSettings</span><span class="o">::</span><span class="n">NativeFormat</span><span class="p">);</span>
+    <span class="n">users</span><span class="p">.</span><span class="n">setValue</span><span class="p">(</span><span class="s">&quot;K&quot;</span><span class="p">,</span><span class="s">&quot;V&quot;</span><span class="p">);</span>
+    <span class="n">users</span><span class="p">.</span><span class="n">sync</span><span class="p">();</span>
+	</code></pre></figure>
 
-<p>然后</p>
+<h1 id="cmd">隐藏CMD窗口</h1>
 
-<pre><code>#make
-#make install
-</code></pre>
+<p>由于写了一个控制台程序，需要不显示窗口，搜索到：</p>
 
-<p>编译起来还是蛮方便的</p>
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++">	<span class="cp">#pragma comment(linker, &quot;/subsystem:\&quot;windows\&quot; /entry:\&quot;mainCRTStartup\&quot;&quot;)</span>
+	</code></pre></figure>
 
-<p>推荐一个博客,里面有编译一些开源库的方法<a href="http://blog.csdn.net/zjg555543/article/details/7520936">mips交叉编译开源库</a></p>
+<p>使用这一句，可以隐藏</p>
+
+<h1 id="qt">QT的程序增加管理员权限。</h1>
+<p>在pro文件中增加：</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++">	<span class="n">QMAKE_LFLAGS</span> <span class="o">+=</span> <span class="o">/</span><span class="nl">MANIFESTUAC</span><span class="p">:</span><span class="s">&quot;level=&#39;requireAdministrator&#39;uiAccess=&#39;false&#39;&quot;</span>
+	</code></pre></figure>
+
 
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="/2016/04/12/build-mips-openssl" data-title="Build mips openssl" data-url="j1111011.github.io/2016/04/12/build-mips-openssl.html"></div>
+	<div class="ds-thread" data-thread-key="/2016/05/28/set-windows-system-env" data-title="set windows system environment" data-url="j1111011.github.io/2016/05/28/set-windows-system-env.html"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
