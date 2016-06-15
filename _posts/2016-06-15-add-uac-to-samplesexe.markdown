@@ -8,6 +8,7 @@ tags:	['uac','requireAdministrator']
 ---
 
 # 先编写一个 XML ，以这个命名$YOU_PAMGRAM.exe.intermediate.manifest 
+往文件写入以下内容
 
 	{% highlight xml %}
 

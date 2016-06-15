@@ -6,13 +6,14 @@
 </description>
     <link>http://j1111011.github.io/</link>
     <atom:link href="http://j1111011.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 15 Jun 2016 09:57:24 +0800</pubDate>
-    <lastBuildDate>Wed, 15 Jun 2016 09:57:24 +0800</lastBuildDate>
+    <pubDate>Wed, 15 Jun 2016 10:10:01 +0800</pubDate>
+    <lastBuildDate>Wed, 15 Jun 2016 10:10:01 +0800</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
     
       <item>
         <title>向现有EXE文件中加入 以管理员权限运行（UAC） 权限</title>
         <description>&lt;h1 id=&quot;xml-youpamgramexeintermediatemanifest&quot;&gt;先编写一个 XML ，以这个命名$YOU_PAMGRAM.exe.intermediate.manifest&lt;/h1&gt;
+&lt;p&gt;往文件写入以下内容&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;	&lt;span class=&quot;cp&quot;&gt;&amp;lt;?xml version=&amp;#39;1.0&amp;#39; encoding=&amp;#39;UTF-8&amp;#39; standalone=&amp;#39;yes&amp;#39;?&amp;gt;&lt;/span&gt;
 	&lt;span class=&quot;nt&quot;&gt;&amp;lt;assembly&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;xmlns=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;urn:schemas-microsoft-com:asm.v1&amp;#39;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;manifestVersion=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;1.0&amp;#39;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;

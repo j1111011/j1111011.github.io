@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>向现有EXE文件中加入 以管理员权限运行（UAC） 权限</title>
-  <meta name="description" content="先编写一个 XML ，以这个命名$YOU_PAMGRAM.exe.intermediate.manifest">
+  <meta name="description" content="先编写一个 XML ，以这个命名$YOU_PAMGRAM.exe.intermediate.manifest往文件写入以下内容">
 
   <link rel="stylesheet" href="/css/main.css">
   <link rel="canonical" href="http://j1111011.github.io/2016/06/15/add-uac-to-samplesexe.html">
@@ -63,6 +63,7 @@
 
   <div class="post-content" itemprop="articleBody">
     <h1 id="xml-youpamgramexeintermediatemanifest">先编写一个 XML ，以这个命名$YOU_PAMGRAM.exe.intermediate.manifest</h1>
+<p>往文件写入以下内容</p>
 
 <figure class="highlight"><pre><code class="language-xml" data-lang="xml">	<span class="cp">&lt;?xml version=&#39;1.0&#39; encoding=&#39;UTF-8&#39; standalone=&#39;yes&#39;?&gt;</span>
 	<span class="nt">&lt;assembly</span> <span class="na">xmlns=</span><span class="s">&#39;urn:schemas-microsoft-com:asm.v1&#39;</span> <span class="na">manifestVersion=</span><span class="s">&#39;1.0&#39;</span><span class="nt">&gt;</span>
