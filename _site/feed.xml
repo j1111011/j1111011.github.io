@@ -6,9 +6,109 @@
 </description>
     <link>http://j1111011.github.io/</link>
     <atom:link href="http://j1111011.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 28 May 2016 12:37:59 +0800</pubDate>
-    <lastBuildDate>Sat, 28 May 2016 12:37:59 +0800</lastBuildDate>
+    <pubDate>Wed, 15 Jun 2016 09:57:24 +0800</pubDate>
+    <lastBuildDate>Wed, 15 Jun 2016 09:57:24 +0800</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+        <title>向现有EXE文件中加入 以管理员权限运行（UAC） 权限</title>
+        <description>&lt;h1 id=&quot;xml-youpamgramexeintermediatemanifest&quot;&gt;先编写一个 XML ，以这个命名$YOU_PAMGRAM.exe.intermediate.manifest&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;	&lt;span class=&quot;cp&quot;&gt;&amp;lt;?xml version=&amp;#39;1.0&amp;#39; encoding=&amp;#39;UTF-8&amp;#39; standalone=&amp;#39;yes&amp;#39;?&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;assembly&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;xmlns=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;urn:schemas-microsoft-com:asm.v1&amp;#39;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;manifestVersion=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;1.0&amp;#39;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+	  &lt;span class=&quot;nt&quot;&gt;&amp;lt;trustInfo&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;xmlns=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;urn:schemas-microsoft-com:asm.v3&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+	    &lt;span class=&quot;nt&quot;&gt;&amp;lt;security&amp;gt;&lt;/span&gt;
+	      &lt;span class=&quot;nt&quot;&gt;&amp;lt;requestedPrivileges&amp;gt;&lt;/span&gt;
+	        &lt;span class=&quot;nt&quot;&gt;&amp;lt;requestedExecutionLevel&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;level=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;requireAdministrator&amp;#39;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;uiAccess=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;false&amp;#39;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+	      &lt;span class=&quot;nt&quot;&gt;&amp;lt;/requestedPrivileges&amp;gt;&lt;/span&gt;
+	    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/security&amp;gt;&lt;/span&gt;
+	  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/trustInfo&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;/assembly&amp;gt;&lt;/span&gt;
+
+	&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h1 id=&quot;vs2010--&quot;&gt;打开 VS2010 的 命令行&lt;/h1&gt;
+
+&lt;p&gt;使用MT将以上文件编入程序，该程序就具备以管理员权限运行权限&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;mt.exe -manifest $YOU_PAMGRAM.exe.intermediate.manifest -outputresource:$YOU_PAMGRAM.exe;#1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;备注：$YOU_PAMGRAM 是你对应的程序名称&lt;/p&gt;
+</description>
+        <pubDate>Wed, 15 Jun 2016 09:46:40 +0800</pubDate>
+        <link>http://j1111011.github.io/2016/06/15/add-uac-to-samplesexe.html</link>
+        <guid isPermaLink="true">http://j1111011.github.io/2016/06/15/add-uac-to-samplesexe.html</guid>
+        
+        <category>uac</category>
+        
+        <category>requireAdministrator</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>build arm qt5.5</title>
+        <description>&lt;h1 id=&quot;step1-install-requirements&quot;&gt;step1 install Requirements&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get install build-essential perl python git
+sudo apt-get install &quot;^libxcb.&#39;&#39;&#39;&quot; libx11-xcb-dev libglu1-mesa-dev libxrender-dev
+sudo apt-get install flex bison gperf libicu-dev libxslt-dev ruby
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&quot;step2-build-arm-icu&quot;&gt;step2 build arm icu&lt;/h1&gt;
+
+&lt;p&gt;How To Cross Compile ICU&lt;/p&gt;
+
+&lt;p&gt;This section will explain how to build ICU on one platform, but to produce binaries intended to run on another. This is commonly known as a cross compile.&lt;/p&gt;
+
+&lt;p&gt;Normally, in the course of a build, ICU needs to run the tools that it builds in order to generate and package data and test-data.In a cross compilation setting, ICU is built on a different system from that which it eventually runs on. An example might be, if you are building for a small/headless system (such as an embedded device), or a system where you can’t easily run the ICU command line tools (any non-UNIX-like system).&lt;/p&gt;
+
+&lt;p&gt;To reduce confusion, we will here refer to the “A” and the “B” system.System “A” is the actual system we will be running on- the only requirements on it is are it is able to build ICU from the command line targetting itself (with configure or runConfigureICU), and secondly, that it also contain the correct toolchain for compiling and linking for the resultant platform, referred to as the “B” system.&lt;/p&gt;
+
+&lt;p&gt;The autoconf docs use the term “build” for A, and “host” for B. More details at: http://www.gnu.org/software/autoconf/manual/html_node/Specifying-Names.html&lt;/p&gt;
+
+&lt;p&gt;Three initially-empty directories will be used in this example:&lt;/p&gt;
+
+&lt;p&gt;/icu
+a copy of the ICU source&lt;/p&gt;
+
+&lt;p&gt;/buildA
+an empty directory, it will contain ICU built for A
+(MacOSX in this case)&lt;/p&gt;
+
+&lt;p&gt;/buildB
+an empty directory, it will contain ICU built for B
+(HaikuOS in this case) 
+1.Check out or unpack the ICU source code into the /icu directory.You will have the directories /icu/source, etc.
+2.Build ICU in /buildA normally (using runConfigureICU or configure): cd /buildA
+sh /icu/source/runConfigureICU MacOSX
+gnumake&lt;/p&gt;
+
+&lt;p&gt;3.Set PATH or other variables as needed, such as CPPFLAGS.
+4.Build ICU in /buildB&lt;/p&gt;
+
+&lt;p&gt;”–with-cross-build” takes an absolute path.
+cd /buildB
+sh /icu/source/configure –host=arm-linux-gnueabi –with-cross-build=/buildA
+gnumake&lt;/p&gt;
+
+&lt;p&gt;5.Tests and testdata can be built with “gnumake tests”.&lt;/p&gt;
+
+&lt;h1 id=&quot;step3-build-qt55&quot;&gt;step3 build qt5.5&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;#cd $QT_SRC_DIR
+#./configure -xplatform linux-arm-gnueabi-g++ -confirm-license -opensource -release -shared -prefix $TOOLCHAIN_HOME -no-c++11 -nomake tests -nomake examples
+#make -j 8 
+#make install
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Wed, 15 Jun 2016 09:23:25 +0800</pubDate>
+        <link>http://j1111011.github.io/2016/06/15/build-arm-qt55.html</link>
+        <guid isPermaLink="true">http://j1111011.github.io/2016/06/15/build-arm-qt55.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>set windows system environment</title>

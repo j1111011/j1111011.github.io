@@ -1,0 +1,61 @@
+---
+layout:	post
+title:	"build arm qt5.5"
+date:	2016-06-15 09:23:25 +0800
+description: ""
+categories:	
+tags:	[]
+---
+# step1 install Requirements
+
+	sudo apt-get install build-essential perl python git
+	sudo apt-get install "^libxcb.'''" libx11-xcb-dev libglu1-mesa-dev libxrender-dev
+	sudo apt-get install flex bison gperf libicu-dev libxslt-dev ruby
+
+# step2 build arm icu
+
+How To Cross Compile ICU
+
+This section will explain how to build ICU on one platform, but to produce binaries intended to run on another. This is commonly known as a cross compile.
+
+Normally, in the course of a build, ICU needs to run the tools that it builds in order to generate and package data and test-data.In a cross compilation setting, ICU is built on a different system from that which it eventually runs on. An example might be, if you are building for a small/headless system (such as an embedded device), or a system where you can't easily run the ICU command line tools (any non-UNIX-like system).
+
+To reduce confusion, we will here refer to the "A" and the "B" system.System "A" is the actual system we will be running on- the only requirements on it is are it is able to build ICU from the command line targetting itself (with configure or runConfigureICU), and secondly, that it also contain the correct toolchain for compiling and linking for the resultant platform, referred to as the "B" system.
+
+The autoconf docs use the term "build" for A, and "host" for B. More details at: http://www.gnu.org/software/autoconf/manual/html_node/Specifying-Names.html
+
+Three initially-empty directories will be used in this example:
+
+
+/icu
+a copy of the ICU source 
+
+/buildA
+an empty directory, it will contain ICU built for A
+(MacOSX in this case) 
+
+/buildB
+an empty directory, it will contain ICU built for B
+(HaikuOS in this case) 
+1.Check out or unpack the ICU source code into the /icu directory.You will have the directories /icu/source, etc.
+2.Build ICU in /buildA normally (using runConfigureICU or configure): cd /buildA
+sh /icu/source/runConfigureICU MacOSX
+gnumake
+
+
+3.Set PATH or other variables as needed, such as CPPFLAGS.
+4.Build ICU in /buildB
+
+"--with-cross-build" takes an absolute path.
+cd /buildB
+sh /icu/source/configure --host=arm-linux-gnueabi --with-cross-build=/buildA
+gnumake
+
+5.Tests and testdata can be built with "gnumake tests".
+
+# step3 build qt5.5
+
+	#cd $QT_SRC_DIR
+	#./configure -xplatform linux-arm-gnueabi-g++ -confirm-license -opensource -release -shared -prefix $TOOLCHAIN_HOME -no-c++11 -nomake tests -nomake examples
+	#make -j 8 
+	#make install

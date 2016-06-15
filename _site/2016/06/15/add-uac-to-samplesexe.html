@@ -6,12 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>j1111011 Pages</title>
-  <meta name="description" content="Welcome to my sites.
-">
+  <title>向现有EXE文件中加入 以管理员权限运行（UAC） 权限</title>
+  <meta name="description" content="先编写一个 XML ，以这个命名$YOU_PAMGRAM.exe.intermediate.manifest">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://j1111011.github.io/">
+  <link rel="canonical" href="http://j1111011.github.io/2016/06/15/add-uac-to-samplesexe.html">
   <link rel="alternate" type="application/rss+xml" title="j1111011 Pages" href="http://j1111011.github.io/feed.xml">
 </head>
 
@@ -55,81 +54,57 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="home">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-  <h1 class="page-heading">Posts</h1>
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">向现有EXE文件中加入 以管理员权限运行（UAC） 权限</h1>
+    <p class="post-meta"><time datetime="2016-06-15T09:46:40+08:00" itemprop="datePublished">Jun 15, 2016</time></p>
+  </header>
 
-  <ul class="post-list">
-    
-      <li>
-        <span class="post-meta">Jun 15, 2016</span>
+  <div class="post-content" itemprop="articleBody">
+    <h1 id="xml-youpamgramexeintermediatemanifest">先编写一个 XML ，以这个命名$YOU_PAMGRAM.exe.intermediate.manifest</h1>
 
-        <h2>
-          <a class="post-link" href="/2016/06/15/add-uac-to-samplesexe.html">向现有EXE文件中加入 以管理员权限运行（UAC） 权限</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Jun 15, 2016</span>
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml">	<span class="cp">&lt;?xml version=&#39;1.0&#39; encoding=&#39;UTF-8&#39; standalone=&#39;yes&#39;?&gt;</span>
+	<span class="nt">&lt;assembly</span> <span class="na">xmlns=</span><span class="s">&#39;urn:schemas-microsoft-com:asm.v1&#39;</span> <span class="na">manifestVersion=</span><span class="s">&#39;1.0&#39;</span><span class="nt">&gt;</span>
+	  <span class="nt">&lt;trustInfo</span> <span class="na">xmlns=</span><span class="s">&quot;urn:schemas-microsoft-com:asm.v3&quot;</span><span class="nt">&gt;</span>
+	    <span class="nt">&lt;security&gt;</span>
+	      <span class="nt">&lt;requestedPrivileges&gt;</span>
+	        <span class="nt">&lt;requestedExecutionLevel</span> <span class="na">level=</span><span class="s">&#39;requireAdministrator&#39;</span> <span class="na">uiAccess=</span><span class="s">&#39;false&#39;</span> <span class="nt">/&gt;</span>
+	      <span class="nt">&lt;/requestedPrivileges&gt;</span>
+	    <span class="nt">&lt;/security&gt;</span>
+	  <span class="nt">&lt;/trustInfo&gt;</span>
+	<span class="nt">&lt;/assembly&gt;</span>
 
-        <h2>
-          <a class="post-link" href="/2016/06/15/build-arm-qt55.html">build arm qt5.5</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">May 28, 2016</span>
+	</code></pre></figure>
 
-        <h2>
-          <a class="post-link" href="/2016/05/28/set-windows-system-env.html">set windows system environment</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Apr 12, 2016</span>
+<h1 id="vs2010--">打开 VS2010 的 命令行</h1>
 
-        <h2>
-          <a class="post-link" href="/2016/04/12/build-mips-openssl.html">Build mips openssl</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Mar 17, 2016</span>
+<p>使用MT将以上文件编入程序，该程序就具备以管理员权限运行权限</p>
 
-        <h2>
-          <a class="post-link" href="/build/2016/03/17/gradle-buildtypes.html">Android Studio区别编译Debug|Release版本</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Mar 8, 2016</span>
+<pre><code>mt.exe -manifest $YOU_PAMGRAM.exe.intermediate.manifest -outputresource:$YOU_PAMGRAM.exe;#1
+</code></pre>
 
-        <h2>
-          <a class="post-link" href="/2016/03/08/easssdk-integration.html">AssSDK 集成方法及环境配置 </a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Mar 3, 2016</span>
+<p>备注：$YOU_PAMGRAM 是你对应的程序名称</p>
 
-        <h2>
-          <a class="post-link" href="/2016/03/03/jekyll.html">折腾了好久，最终还是使用jekyll</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Mar 3, 2016</span>
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="/2016/06/15/add-uac-to-samplesexe" data-title="向现有EXE文件中加入 以管理员权限运行（UAC） 权限" data-url="j1111011.github.io/2016/06/15/add-uac-to-samplesexe.html"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"j1111011"};
+		(function() {
+			var ds = document.createElement('script');
+			ds.type = 'text/javascript';ds.async = true;
+			ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+			ds.charset = 'UTF-8';
+			(document.getElementsByTagName('head')[0] 
+			 || document.getElementsByTagName('body')[0]).appendChild(ds);
+		})();
+		</script>
+	<!-- 多说公共JS代码 end -->
+  </div>
 
-        <h2>
-          <a class="post-link" href="/2016/03/03/hellojekyll.html">Hello Jekyll</a>
-        </h2>
-      </li>
-    
-  </ul>
-
-  <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
-
-</div>
+</article>
 		
       </div>
     </div>
