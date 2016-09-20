@@ -6,12 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>j1111011 Pages</title>
-  <meta name="description" content="Welcome to my sites.
-">
+  <title>build android live555</title>
+  <meta name="description" content="step 1. generate android standalone-toolchian.">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://j1111011.github.io/">
+  <link rel="canonical" href="http://j1111011.github.io/2016/09/20/build-android-live555.html">
   <link rel="alternate" type="application/rss+xml" title="j1111011 Pages" href="http://j1111011.github.io/feed.xml">
 </head>
 
@@ -55,89 +54,72 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="home">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-  <h1 class="page-heading">Posts</h1>
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">build android live555</h1>
+    <p class="post-meta"><time datetime="2016-09-20T09:49:36+08:00" itemprop="datePublished">Sep 20, 2016</time></p>
+  </header>
 
-  <ul class="post-list">
-    
-      <li>
-        <span class="post-meta">Sep 20, 2016</span>
+  <div class="post-content" itemprop="articleBody">
+    <h1 id="step-1-generate-android-standalone-toolchian">step 1. generate android standalone-toolchian.</h1>
 
-        <h2>
-          <a class="post-link" href="/2016/09/20/build-android-live555.html">build android live555</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Jun 15, 2016</span>
+<pre><code>$$NDK_HOME/build/tools/make-standalone-toolchain.sh --platform=android-5 --install-dir=/tmp/my-android-toolchain [ --arch=x86 ]
 
-        <h2>
-          <a class="post-link" href="/2016/06/15/add-uac-to-samplesexe.html">向现有EXE文件中加入 以管理员权限运行（UAC） 权限</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Jun 15, 2016</span>
+$export PATH=$PATH:/tmp/my-android-toolchain/bin
 
-        <h2>
-          <a class="post-link" href="/2016/06/15/build-arm-qt55.html">build arm qt5.5</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">May 28, 2016</span>
+--arch defalut arm
+</code></pre>
 
-        <h2>
-          <a class="post-link" href="/2016/05/28/set-windows-system-env.html">set windows system environment</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Apr 12, 2016</span>
+<h1 id="step-2-generate-android-x86-makefiles">step 2. generate android-x86 Makefiles.</h1>
 
-        <h2>
-          <a class="post-link" href="/2016/04/12/build-mips-openssl.html">Build mips openssl</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Mar 17, 2016</span>
+<pre><code>$copy config.armlinux config.android-x86
+$vi config.android-x86 
+COMPILE_OPTS =		$(INCLUDES) -fPIE -I. -O2 -DSOCKLEN_T=socklen_t -D_LARGEFILE_SOURCE=1 -D_FILE_OFFSET_BITS=32
+C =			c
+C_COMPILER =		i686-linux-android-gcc
+C_FLAGS =		$(COMPILE_OPTS)
+CPP =			cpp
+CPLUSPLUS_COMPILER =	i686-linux-android-c++
+CPLUSPLUS_FLAGS =	$(COMPILE_OPTS) -Wall -DBSD=1
+OBJ =			o
+LINK =			i686-linux-android-c++ -o
+LINK_OPTS =		-L. -fPIE -pie
+CONSOLE_LINK_OPTS =	$(LINK_OPTS)
+LIBRARY_LINK =		i686-linux-android-ar cr 
+LIBRARY_LINK_OPTS =	
+LIB_SUFFIX =			a
+LIBS_FOR_CONSOLE_APPLICATION =
+LIBS_FOR_GUI_APPLICATION =
+EXE =
 
-        <h2>
-          <a class="post-link" href="/build/2016/03/17/gradle-buildtypes.html">Android Studio区别编译Debug|Release版本</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Mar 8, 2016</span>
+$./genMakefiles android-x86
+</code></pre>
 
-        <h2>
-          <a class="post-link" href="/2016/03/08/easssdk-integration.html">AssSDK 集成方法及环境配置 </a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Mar 3, 2016</span>
+<h1 id="step-3-compile">step 3. compile</h1>
+<pre><code>$ make 
+</code></pre>
 
-        <h2>
-          <a class="post-link" href="/2016/03/03/jekyll.html">折腾了好久，最终还是使用jekyll</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Mar 3, 2016</span>
 
-        <h2>
-          <a class="post-link" href="/2016/03/03/hellojekyll.html">Hello Jekyll</a>
-        </h2>
-      </li>
-    
-  </ul>
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="/2016/09/20/build-android-live555" data-title="build android live555" data-url="j1111011.github.io/2016/09/20/build-android-live555.html"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"j1111011"};
+		(function() {
+			var ds = document.createElement('script');
+			ds.type = 'text/javascript';ds.async = true;
+			ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+			ds.charset = 'UTF-8';
+			(document.getElementsByTagName('head')[0] 
+			 || document.getElementsByTagName('body')[0]).appendChild(ds);
+		})();
+		</script>
+	<!-- 多说公共JS代码 end -->
+  </div>
 
-  <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
-
-</div>
+</article>
 		
       </div>
     </div>

@@ -6,9 +6,63 @@
 </description>
     <link>http://j1111011.github.io/</link>
     <atom:link href="http://j1111011.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 15 Jun 2016 10:10:01 +0800</pubDate>
-    <lastBuildDate>Wed, 15 Jun 2016 10:10:01 +0800</lastBuildDate>
+    <pubDate>Tue, 20 Sep 2016 10:02:09 +0800</pubDate>
+    <lastBuildDate>Tue, 20 Sep 2016 10:02:09 +0800</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+        <title>build android live555</title>
+        <description>&lt;h1 id=&quot;step-1-generate-android-standalone-toolchian&quot;&gt;step 1. generate android standalone-toolchian.&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;$$NDK_HOME/build/tools/make-standalone-toolchain.sh --platform=android-5 --install-dir=/tmp/my-android-toolchain [ --arch=x86 ]
+
+$export PATH=$PATH:/tmp/my-android-toolchain/bin
+
+--arch defalut arm
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&quot;step-2-generate-android-x86-makefiles&quot;&gt;step 2. generate android-x86 Makefiles.&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;$copy config.armlinux config.android-x86
+$vi config.android-x86 
+COMPILE_OPTS =		$(INCLUDES) -fPIE -I. -O2 -DSOCKLEN_T=socklen_t -D_LARGEFILE_SOURCE=1 -D_FILE_OFFSET_BITS=32
+C =			c
+C_COMPILER =		i686-linux-android-gcc
+C_FLAGS =		$(COMPILE_OPTS)
+CPP =			cpp
+CPLUSPLUS_COMPILER =	i686-linux-android-c++
+CPLUSPLUS_FLAGS =	$(COMPILE_OPTS) -Wall -DBSD=1
+OBJ =			o
+LINK =			i686-linux-android-c++ -o
+LINK_OPTS =		-L. -fPIE -pie
+CONSOLE_LINK_OPTS =	$(LINK_OPTS)
+LIBRARY_LINK =		i686-linux-android-ar cr 
+LIBRARY_LINK_OPTS =	
+LIB_SUFFIX =			a
+LIBS_FOR_CONSOLE_APPLICATION =
+LIBS_FOR_GUI_APPLICATION =
+EXE =
+
+$./genMakefiles android-x86
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&quot;step-3-compile&quot;&gt;step 3. compile&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;$ make 
+&lt;/code&gt;&lt;/pre&gt;
+
+</description>
+        <pubDate>Tue, 20 Sep 2016 09:49:36 +0800</pubDate>
+        <link>http://j1111011.github.io/2016/09/20/build-android-live555.html</link>
+        <guid isPermaLink="true">http://j1111011.github.io/2016/09/20/build-android-live555.html</guid>
+        
+        <category>android</category>
+        
+        <category>live555</category>
+        
+        <category>standalone-toolchain</category>
+        
+        
+      </item>
     
       <item>
         <title>向现有EXE文件中加入 以管理员权限运行（UAC） 权限</title>
