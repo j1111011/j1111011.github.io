@@ -19,3 +19,7 @@ github_username:  j1111011
 markdown: kramdown
 highlight: true
 highlighter: pygments
+
+# Custom Collection
+collections:
+-  skills
