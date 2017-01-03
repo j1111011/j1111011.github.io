@@ -1,0 +1,43 @@
+---
+layout:	post
+title:	"静态编译ARM - QT5程序"
+date:	2017-01-03 14:50:57 +0800
+description: ""
+categories:	
+tags:	[]
+---
+## 编译静态版QT5
+
+`$./configure -xplatform linux-arm-gnueabi-g++ -confirm-license -opensource -release -static -prefix /opt/sbox -no-c++11 -nomake tests -nomake examples -dbus -qt-zlib -skip qtmultimedia -skip qtquickcontrols -skip qtconnectivity -skip qtsensors -no-qml-debug -tslib`
+
+*注1： -skip $module 可以在编译过程中跳过指定的模块。避免全部编译QT*
+
+`$make -j 8 && sudo make install`
+
+## 在工程中添加静态编译插件
+
+在$project.pro工程文件中添加插件静态编译
+
+	QTPLUGIN.platforms = qlinuxfb
+	QTPLUGIN.generic = qtslibplugin \
+	qevdevtouchplugin \
+	qevdevmouseplugin \
+	qevdevtabletplugin \
+	qtslibplugin \
+	qtuiotouchplugin \
+	qevdevkeyboardplugin
+
+
+*注2：静态版本中，所有需要使用到的插件都需要静态链接到工程中*
+
+
+## 编译静态版本程序
+
+	$/opt/sbox/bin/qmake $project.pro
+	$make -j 8
+
+## 发布程序
+	
+将编译好的程序打包即可。
+
+

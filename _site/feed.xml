@@ -6,9 +6,53 @@
 </description>
     <link>http://j1111011.github.io/</link>
     <atom:link href="http://j1111011.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 23 Sep 2016 14:27:45 +0800</pubDate>
-    <lastBuildDate>Fri, 23 Sep 2016 14:27:45 +0800</lastBuildDate>
+    <pubDate>Tue, 03 Jan 2017 15:02:20 +0800</pubDate>
+    <lastBuildDate>Tue, 03 Jan 2017 15:02:20 +0800</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+        <title>静态编译ARM - QT5程序</title>
+        <description>&lt;h2 id=&quot;qt5&quot;&gt;编译静态版QT5&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;$./configure -xplatform linux-arm-gnueabi-g++ -confirm-license -opensource -release -static -prefix /opt/sbox -no-c++11 -nomake tests -nomake examples -dbus -qt-zlib -skip qtmultimedia -skip qtquickcontrols -skip qtconnectivity -skip qtsensors -no-qml-debug -tslib&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;注1： -skip $module 可以在编译过程中跳过指定的模块。避免全部编译QT&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$make -j 8 &amp;amp;&amp;amp; sudo make install&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;在工程中添加静态编译插件&lt;/h2&gt;
+
+&lt;p&gt;在$project.pro工程文件中添加插件静态编译&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;QTPLUGIN.platforms = qlinuxfb
+QTPLUGIN.generic = qtslibplugin \
+qevdevtouchplugin \
+qevdevmouseplugin \
+qevdevtabletplugin \
+qtslibplugin \
+qtuiotouchplugin \
+qevdevkeyboardplugin
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;注2：静态版本中，所有需要使用到的插件都需要静态链接到工程中&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;编译静态版本程序&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;$/opt/sbox/bin/qmake $project.pro
+$make -j 8
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;发布程序&lt;/h2&gt;
+
+&lt;p&gt;将编译好的程序打包即可。&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 03 Jan 2017 14:50:57 +0800</pubDate>
+        <link>http://j1111011.github.io/2017/01/03/qt5.html</link>
+        <guid isPermaLink="true">http://j1111011.github.io/2017/01/03/qt5.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>build android live555</title>
