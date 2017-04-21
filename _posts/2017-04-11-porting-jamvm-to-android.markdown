@@ -1,7 +1,7 @@
 ---
 layout:	post
 title:	"porting jamvm & gnuclasspath to android"
-date:	2017-04-13 19:52:12 +0800
+date:	2017-04-11 19:45:12 +0800
 description: ""
 categories:	porting
 tags:	['j2me','jamvm','gnuclasspath']
