@@ -1,6 +1,6 @@
 ---
 layout:	post
-title:	"porting cvm to android"
+title:	"porting jamvm & gnuclasspath to android"
 date:	2017-04-13 19:52:12 +0800
 description: ""
 categories:	porting
